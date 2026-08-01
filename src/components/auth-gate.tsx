@@ -21,6 +21,18 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
     setReady(true);
   }, [router, isAuthenticated, token]);
 
+  React.useEffect(() => {
+    function recheck() {
+      if (!isAuthenticated()) router.replace("/login");
+    }
+    window.addEventListener("visibilitychange", recheck);
+    window.addEventListener("focus", recheck);
+    return () => {
+      window.removeEventListener("visibilitychange", recheck);
+      window.removeEventListener("focus", recheck);
+    };
+  }, [router, isAuthenticated]);
+
   if (!ready) {
     return (
       <div className="flex min-h-screen items-center justify-center">

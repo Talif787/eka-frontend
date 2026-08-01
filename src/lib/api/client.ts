@@ -25,6 +25,9 @@ export async function apiFetch<T>(path: string, opts: RequestOptions = {}): Prom
   if (opts.body !== undefined) headers["Content-Type"] = "application/json";
   if (opts.token) {
     headers["Authorization"] = `Bearer ${opts.token}`;
+    // Duplicate the token in a custom header. Some environments (Codespaces
+    // port tunnels) consume Authorization for their own auth; X-EKA-Token
+    // passes through untouched, and the backend accepts either.
     headers["X-EKA-Token"] = opts.token;
   }
 
