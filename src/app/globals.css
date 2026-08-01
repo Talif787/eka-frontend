@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 24% 99%;
+    --foreground: 224 16% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 16% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 16% 12%;
+    --primary: 241 64% 59%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 40 14% 95%;
+    --muted-foreground: 224 8% 42%;
+    --accent: 40 14% 94%;
+    --accent-foreground: 224 16% 12%;
+    --cite: 36 92% 48%;
+    --cite-foreground: 30 40% 12%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 52% 38%;
+    --success-foreground: 0 0% 100%;
+    --warning: 36 92% 46%;
+    --warning-foreground: 30 40% 12%;
+    --border: 38 12% 89%;
+    --input: 38 12% 86%;
+    --ring: 241 64% 59%;
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 230 16% 7%;
+    --foreground: 40 20% 96%;
+    --card: 230 14% 9%;
+    --card-foreground: 40 20% 96%;
+    --popover: 230 14% 10%;
+    --popover-foreground: 40 20% 96%;
+    --primary: 241 74% 70%;
+    --primary-foreground: 230 40% 10%;
+    --muted: 230 12% 15%;
+    --muted-foreground: 230 8% 62%;
+    --accent: 230 12% 16%;
+    --accent-foreground: 40 20% 96%;
+    --cite: 38 94% 60%;
+    --cite-foreground: 30 60% 10%;
+    --destructive: 0 66% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 48% 46%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 56%;
+    --warning-foreground: 30 60% 10%;
+    --border: 230 10% 18%;
+    --input: 230 10% 22%;
+    --ring: 241 74% 70%;
+  }
+
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { @apply bg-primary/20; }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
