@@ -45,7 +45,7 @@ export default function LoginPage() {
       const res = await issueToken({ tenant_id: values.tenant_id, subject: values.subject, roles });
       setToken(res.access_token);
       toast.success("Signed in", { description: `Workspace ${values.tenant_id.slice(0, 8)}` });
-      router.replace("/documents");
+      router.replace("/dashboard");
     } catch (e) {
       const msg = e instanceof ApiError ? e.message : "Could not reach the API. Is it running?";
       toast.error("Sign in failed", { description: msg });

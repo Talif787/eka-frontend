@@ -5,11 +5,12 @@ to the EKA FastAPI backend and gives you a workspace to register documents, feed
 them for ingestion, and (in later phases) search and ask grounded, cited
 questions.
 
-Phases F1 and F2 have shipped: the runnable foundation, design system, auth, app
-shell, the full typed API client against every real endpoint, the Documents
-feature end to end, Search, and the streaming Answer view with a grounding rail
-(citation markers linked to the source passages that back each claim). The
-ingestion monitor, dashboard KPIs, and command palette arrive in F3.
+All three phases have shipped, and every backend endpoint now has a screen. F1:
+foundation, design system, auth, app shell, the full typed API client, and the
+Documents feature. F2: Search and the streaming Answer view with a grounding rail
+(citation markers linked to the source passages that back each claim). F3: a live
+ingestion jobs monitor, a dashboard of KPIs, and a command palette. Developer
+docs live in `docs/`.
 
 ## Stack
 

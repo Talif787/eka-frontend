@@ -1,7 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { ScrollText } from "lucide-react";
+import { ScrollText, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Kbd } from "@/components/ui/kbd";
+import { useCommandStore } from "@/lib/command/store";
 import { ThemeToggle } from "./theme-toggle";
 import { UserMenu } from "./user-menu";
 import { navItems } from "./nav";
@@ -10,6 +13,7 @@ import { useAuthStore } from "@/lib/auth/store";
 export function Topbar() {
   const pathname = usePathname();
   const claims = useAuthStore((s) => s.claims);
+  const openCommand = useCommandStore((s) => s.setOpen);
   const current = navItems.find((n) => pathname.startsWith(n.href));
 
   return (
@@ -22,6 +26,15 @@ export function Topbar() {
         <h1 className="font-display text-sm font-semibold tracking-tight">{current?.label ?? "Console"}</h1>
       </div>
       <div className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          className="hidden gap-2 text-muted-foreground sm:inline-flex"
+          onClick={() => openCommand(true)}
+        >
+          <Search className="size-3.5" /> Search
+          <Kbd>Ctrl K</Kbd>
+        </Button>
         {claims?.tid ? (
           <Badge variant="outline" className="hidden font-mono sm:inline-flex">
             {claims.tid.slice(0, 8)}
