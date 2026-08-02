@@ -22,7 +22,7 @@ export function issueToken(body: TokenBody): Promise<TokenResponse> {
   return apiFetch<TokenResponse>("/v1/auth/token", { method: "POST", body });
 }
 
-export interface ListDocumentsParams {
+export type ListDocumentsParams = {
   limit?: number;
   offset?: number;
   sort_by?: string;
